@@ -32,12 +32,13 @@ namespace QuizAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<QuizableDbContext>(c => c.UseSqlServer(Configuration.GetConnectionString("QdbOnline")));
+            services.AddDbContext<QuizableDbContext>(c => c.UseSqlServer(Configuration.GetConnectionString("QdbLaptop")));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "QuizAPI", Version = "v1" });
+
             });
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opts => {
@@ -59,13 +60,13 @@ namespace QuizAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, QuizableDbContext dbContext)
         {
-            //dbContext.Database.Migrate();
+            dbContext.Database.Migrate();
 
             //if (env.IsDevelopment())
             //{
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "QuizAPI v1"));
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "QuizAPI v1"));
             //}
 
             app.UseHttpsRedirection();

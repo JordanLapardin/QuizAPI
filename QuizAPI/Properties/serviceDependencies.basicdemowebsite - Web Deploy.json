@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "apis1": {
+      "apiEndpoint": "https://quizapi.azure-api.net/",
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/QuizAPI/apis/QuizAPI",
       "type": "apis.azure"
     }

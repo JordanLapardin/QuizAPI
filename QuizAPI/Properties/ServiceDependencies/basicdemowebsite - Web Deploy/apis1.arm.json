@@ -100,7 +100,7 @@
                 "apiRevision": "1",
                 "description": null,
                 "subscriptionRequired": true,
-                "serviceUrl": null,
+                "serviceUrl": "https://basicdemowebsite.azurewebsites.net:80/",
                 "path": "",
                 "protocols": [
                   "https"
